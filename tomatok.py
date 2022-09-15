@@ -19,8 +19,13 @@ intv = MINUTES  # display every 60s
 def counter(task="", period=work):
 
     for i in range(period // intv):
+        early_quit = input("\nwant to quit?")
         time.sleep(intv)
+        if early_quit != "":
+            break
+
         print("Remaining mins: ", str(period / intv - i - 1))
+
     # record finished tasks
     if task != "":
         f = open("finished.log", "a+")
@@ -64,11 +69,11 @@ def read_stdin():
             counter("", small_break)
 
 
-read_stdin()
-
-
 def test_tomatok():
     read_stdin()
     counter("中文", work)
     counter("", small_break)
     counter("test task2", work)
+
+
+read_stdin()

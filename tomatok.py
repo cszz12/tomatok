@@ -1,5 +1,6 @@
 import datetime
-import time
+
+# import time
 
 # work 20-min, small break 5min
 MINUTES = 60
@@ -17,13 +18,19 @@ intv = MINUTES  # display every 60s
 
 # counter for a certain time
 def counter(task="", period=work):
-
     for i in range(period // intv):
-        # todo: early exit
-        # early_quit = input("\nwant to quit?")
-        time.sleep(intv)
-        # if early_quit != "":
-        #     break
+        # todo: early exit with timeout input
+        # https://stackoverflow.com/questions/1335507/keyboard-input-with-timeout
+        import select
+        import sys
+
+        str_in, o, e = select.select([sys.stdin], [], [], intv)
+
+        # todo: a bug here, bc stdin is not consumed?
+        # which will case note to skip the first input
+
+        if str_in:
+            break
 
         print("Remaining mins: ", str(period / intv - i - 1))
 
@@ -82,14 +89,16 @@ def some_good_noise():
     os.system("play -nq -t alsa synth {} sine {}".format(duration, freq))
 
 
-# def test_tomatok():
-# too bad noise
-# import os
-# os.system('spd-say "Good job"')
+def test_tomatok():
+    # too bad noise
+    import os
 
-# read_stdin()
-# counter("中文", work)
-# counter("", small_break)
-# counter("test task2", work)
+    os.system('spd-say "Good job"')
+
+    read_stdin()
+    counter("中文", work)
+    counter("", small_break)
+    counter("test task2", work)
+
 
 read_stdin()

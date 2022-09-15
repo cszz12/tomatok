@@ -19,10 +19,11 @@ intv = MINUTES  # display every 60s
 def counter(task="", period=work):
 
     for i in range(period // intv):
-        early_quit = input("\nwant to quit?")
+        # todo: early exit
+        # early_quit = input("\nwant to quit?")
         time.sleep(intv)
-        if early_quit != "":
-            break
+        # if early_quit != "":
+        #     break
 
         print("Remaining mins: ", str(period / intv - i - 1))
 
@@ -45,6 +46,9 @@ def counter(task="", period=work):
 
         f.close()
 
+    # https://stackoverflow.com/questions/16573051/sound-alarm-when-code-finishes
+    # produce sound to remind me
+    some_good_noise()
     print("Good job for finishing " + task + "!\n")
 
 
@@ -69,11 +73,23 @@ def read_stdin():
             counter("", small_break)
 
 
-def test_tomatok():
-    read_stdin()
-    counter("中文", work)
-    counter("", small_break)
-    counter("test task2", work)
+def some_good_noise():
+    import os
 
+    duration = 0.2  # seconds
+    # https://mindisthemaster.com/sound-frequency-healing-human-body-benefits/
+    freq = 396  # Hz in Guita
+    os.system("play -nq -t alsa synth {} sine {}".format(duration, freq))
+
+
+# def test_tomatok():
+# too bad noise
+# import os
+# os.system('spd-say "Good job"')
+
+# read_stdin()
+# counter("中文", work)
+# counter("", small_break)
+# counter("test task2", work)
 
 read_stdin()

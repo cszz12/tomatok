@@ -107,4 +107,37 @@ def wt_notes_to_file(file_name, task):
 
     f.close()
 
+# https://stackoverflow.com/questions/18884017/how-to-check-in-python-if-im-in-certain-range-of-times-of-the-day
+def check_time_of_day():
+	import datetime
+	import time
+	timestamp = datetime.datetime.now().time() # Throw away the date information
+	# time.sleep(1)
+	# print (datetime.datetime.now().time() > timestamp) # >>> True (unless you ran this one second before midnight!)
+
+	# Or check if a time is between two other times
+	start = datetime.time(11, 10) # 11:10
+	end = datetime.time(12) # 12:00
+	print(timestamp)
+	print(start <= timestamp <= end) # >>> depends on what time it is
+
+# https://www.pythonforbeginners.com/files/how-to-extract-a-date-from-a-txt-file-in-python
+def read_calendar_from_file():
+	import re
+
+	# open the text file and read the data
+	file = open("minutes.txt",'r')
+
+	text = file.read()
+	# match dates
+	# matches = re.findall(r'(\d+/\d+/\d+)',text)
+
+	# match hours
+	matches = re.findall(r'(\d+:\d+)',text)
+
+	print(matches)
+
+# read_calendar_from_file()
+# check_time_of_day()
+
 read_stdin()

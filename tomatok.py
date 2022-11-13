@@ -4,17 +4,17 @@ import datetime
 # import time
 
 # work 20-min, small break 5min
-# MINUTES = 60
-# work = 20 * MINUTES
-# small_break = 5 * MINUTES
-# long_break = 10 * MINUTES
-# intv = MINUTES  # display every 60s
+MINUTES = 60
+work = 20 * MINUTES
+small_break = 5 * MINUTES
+long_break = 10 * MINUTES
+intv = MINUTES  # display every 60s
 
 # test params
-work = 10
-small_break = 5
-long_break = 10
-intv = 5 # display every 60s
+# work = 10
+# small_break = 5
+# long_break = 10
+# intv = 5 # display every 60s
 
 
 # counter for a certain time

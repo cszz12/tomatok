@@ -140,4 +140,6 @@ def read_calendar_from_file():
 # read_calendar_from_file()
 # check_time_of_day()
 
+# todo: add ssl in mac and linux to a function
+# run shell: https://janakiev.com/blog/python-shell-commands/
 read_stdin()

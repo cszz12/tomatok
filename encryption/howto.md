@@ -10,4 +10,9 @@ sh dec.sh
 - auto decrypt all files
 
 
+# in ubuntu
+bash enc.sh
+bash dec.sh
+
+
 
